@@ -39,7 +39,8 @@ jobs:
         shell: bash -l {0}
         run: |
           conda activate dedalus
-          pip install "jax>0.4.24,<0.4.29" "jaxlib==$(pip install jax>0.4.24,<0.4.29 --dry-run | grep -oP '(?<=jax-).*(?=\s+\S+$)')"
+          JAX_VERSION=$(pip install "jax>0.4.24,<0.4.29" --dry-run | grep -oP '(?<=jax-).*(?=\s+\S+$)')
+          pip install "jax==$JAX_VERSION" "jaxlib==$JAX_VERSION"
           CC=mpicc pip install --no-cache --no-build-isolation .
       - name: Test Dedalus
         shell: bash -l {0}
