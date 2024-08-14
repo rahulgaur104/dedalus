@@ -39,7 +39,7 @@ jobs:
         shell: bash -l {0}
         run: |
           conda activate dedalus
-          conda install -c conda-forge jax==0.4.30 jaxlib==0.4.30
+          pip install jax==0.4.30 jaxlib==0.4.30
           CC=mpicc pip install --no-cache --no-build-isolation .
       - name: Test Dedalus
         shell: bash -l {0}
